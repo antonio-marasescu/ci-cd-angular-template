@@ -27,7 +27,7 @@ jobs:
           npm run build:ci
       - name: Test Application
         run: |
-          npm test:ci
+          npm run test:ci
       - name: Release
         uses: ncipollo/release-action@v1
         with:
