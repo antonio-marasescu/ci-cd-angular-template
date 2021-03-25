@@ -33,4 +33,4 @@ jobs:
         with:
           artifacts: "dist/ci-cd-angular-template/*"
           token: ${{ secrets.GITHUBTOKEN }}
-          tag: 1.0
+          tag: "1.0.1"
