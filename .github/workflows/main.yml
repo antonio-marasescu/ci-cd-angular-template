@@ -1,0 +1,31 @@
+on: push
+name: Main Branch Pipeline
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Cache Node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}--node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+        - name: Node ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Build
+          run: |
+            npm i
+            npm run build:prod
+        - name: Release
+          uses: ncipollo/release-action@v1
+          with:
+            artifacts: "dist/ci-cd-angular-template/*"
+            token: ${{ secrets.GITHUBTOKEN }}
