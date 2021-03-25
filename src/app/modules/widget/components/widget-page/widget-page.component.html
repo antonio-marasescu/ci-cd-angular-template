@@ -1,0 +1,10 @@
+<div *ngIf="!(loading$ | async); else loadingContainer">
+  <mat-list>
+    <mat-list-item *ngFor="let widget of widgets$ | async">
+      {{ widget.id }} {{ widget.name }} {{ widget.value }}
+    </mat-list-item>
+  </mat-list>
+</div>
+<ng-template #loadingContainer>
+  <mat-spinner></mat-spinner>
+</ng-template>

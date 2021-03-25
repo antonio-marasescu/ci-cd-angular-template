@@ -1,1 +1,1 @@
-# ci-cd-angular-template
+# CI/CD Angular Template
