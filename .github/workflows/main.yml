@@ -24,10 +24,10 @@ jobs:
       - name: Build Application
         run: |
           npm i
-          npm run build:prod
+          npm run build:ci
       - name: Test Application
         run: |
-          npm test
+          npm test:ci
       - name: Release
         uses: ncipollo/release-action@v1
         with:
