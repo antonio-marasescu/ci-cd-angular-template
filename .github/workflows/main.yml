@@ -21,10 +21,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Build
+      - name: Build Application
         run: |
           npm i
           npm run build:prod
+      - name: Test Application
+        run: |
+          npm test
       - name: Release
         uses: ncipollo/release-action@v1
         with:
